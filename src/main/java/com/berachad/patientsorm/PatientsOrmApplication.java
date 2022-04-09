@@ -1,28 +1,22 @@
 package com.berachad.patientsorm;
 
-import com.berachad.patientsorm.Entity.Patient;
-import com.berachad.patientsorm.Repository.PatientRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 
-import java.util.Date;
-import java.util.List;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = SecurityAutoConfiguration.class)
 public class PatientsOrmApplication implements CommandLineRunner {
-    @Autowired
-    private PatientRepository patientRepository;
+
     public static void main(String[] args) {
         SpringApplication.run(PatientsOrmApplication.class, args);
     }
 
+
     @Override
     public void run(String... args) throws Exception {
-        for (int i=0;i<100;i++) {
+/*        for (int i=0;i<100;i++) {
             patientRepository.save(new Patient(null, "mohamed"+i, new Date(), false));
         }
         Page<Patient> patients =patientRepository.findAll(PageRequest.of(4 ,5));
@@ -37,9 +31,9 @@ public class PatientsOrmApplication implements CommandLineRunner {
         System.out.println(patient.getNom());
         System.out.println(patient.getDateNaissance());
         System.out.println(patient.isMalade());
-    });
+    });*/
 
-        System.out.println("==================");
+   /*     System.out.println("==================");
 
         //patientRepository.findById(1L).orElseThrow(()->new RuntimeException("Patient not found "));
         Patient patient =patientRepository.findById(1L).orElse(null);
@@ -55,10 +49,11 @@ public class PatientsOrmApplication implements CommandLineRunner {
         System.out.println("===========CCCCCCCCCC=======");
 
 
+
      List<Patient>  patients1 =patientRepository.findByMalade(true);
         patients1.forEach((Patient) -> {
             System.out.println(Patient.getNom());
-        });
+        });*/
     }
 
 }
