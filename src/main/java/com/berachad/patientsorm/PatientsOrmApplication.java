@@ -22,9 +22,9 @@ public class PatientsOrmApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
 
-        patientRepository.save(new Patient(null,"mohamed",new Date(),false));
-        patientRepository.save(new Patient(null,"Bader",new Date(),true));
-        patientRepository.save(new Patient(null,"Ayoub",new Date(),true));
+     //   patientRepository.save(new Patient(null,"mohamed",new Date(),false));
+       // patientRepository.save(new Patient(null,"Bader",new Date(),true));
+     //   patientRepository.save(new Patient(null,"Ayoub",new Date(),true));
 
         List<Patient> patients =patientRepository.findAll();
         patients.forEach((patient)->{

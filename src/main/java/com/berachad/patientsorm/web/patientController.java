@@ -8,11 +8,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -44,7 +42,21 @@ public class patientController {
     public String home(){
          return "redirect:/index";
     }
-
-
+//Format JSON to use ANGULAR
+    @GetMapping("/patients")
+    @ResponseBody
+    public List<Patient> listPatients(){
+            return patientRepository.findAll();
+    }
+@GetMapping("/formPatients")
+    public String formPatients(Model model){
+        model.addAttribute("patient", new Patient());
+        return "formPatients";
+}
+@PostMapping(path = "/save")
+public String save( Model model ,@Valid Patient patient){
+patientRepository.save(patient);
+return "formPatients";
+    };
 
 }
