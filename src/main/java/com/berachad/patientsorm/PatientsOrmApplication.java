@@ -26,17 +26,17 @@ public class PatientsOrmApplication implements CommandLineRunner {
        // patientRepository.save(new Patient(null,"Bader",new Date(),true));
      //   patientRepository.save(new Patient(null,"Ayoub",new Date(),true));
 
-        List<Patient> patients =patientRepository.findAll();
-        patients.forEach((patient)->{
-            System.out.println("-----------------");
-            System.out.println(patient.getId());
-            System.out.println(patient.getNom());
-            System.out.println(patient.getDateNaissance());
-            System.out.println(patient.isMalade());
-            System.out.println("==================");
-
-
-        });
+//        List<Patient> patients =patientRepository.findAll();
+//        patients.forEach((patient)->{
+//            System.out.println("-----------------");
+//            System.out.println(patient.getId());
+//            System.out.println(patient.getNom());
+//            System.out.println(patient.getDateNaissance());
+//            System.out.println(patient.isMalade());
+//            System.out.println("==================");
+//
+//
+//        });
 
     }
 }

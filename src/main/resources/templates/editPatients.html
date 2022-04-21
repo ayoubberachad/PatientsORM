@@ -11,13 +11,16 @@
 <body>
 <div layout:fragment="content">
     <div class="col-md-6 offset-3">
-        <form method="post" th:action="@{/save}" >
+        <form method="post" th:action="@{save(page=${page}, keyword=${currentKeyword})}" >
             <div>
+
                 </br>
+                <label>ID : </label>
+                <label th:text="${patient.id}"></label>
                 </br>
 
                 <label>Nom : </label>
-                <input type="text" name="nom" th:value="${patient.nom}">
+                <input class="form-control" type="text" name="nom" th:value="${patient.nom}">
                 </br>
                 <span class="text-danger" th:errors="${patient.nom}"></span>
             </div>

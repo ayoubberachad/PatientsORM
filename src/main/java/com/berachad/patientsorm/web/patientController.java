@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -53,10 +54,24 @@ public class patientController {
         model.addAttribute("patient", new Patient());
         return "formPatients";
 }
+//Validation . anotations
 @PostMapping(path = "/save")
-public String save( Model model ,@Valid Patient patient){
-patientRepository.save(patient);
-return "formPatients";
+public String save(Model model , @Valid Patient patient, BindingResult bindingResult,
+                   @RequestParam(defaultValue = "0") int page,
+                   @RequestParam(defaultValue = "") String keyword){
+        if (bindingResult.hasErrors()) return "formPatients";
+        patientRepository.save(patient);
+        return "redirect:/index?page="+page+"&keyword="+keyword;
     };
+
+    @GetMapping("/editPatient")
+    public String editPatient(Model model, Long id,String keyword,int page){
+        Patient patient = patientRepository.findById(id).orElse(null);
+        if (patient ==null) throw new RuntimeException("patient not fond ");
+        model.addAttribute("patient",patient);
+        model.addAttribute("page",page);
+        model.addAttribute("currentKeyword",keyword);
+        return "editPatients";
+    }
 
 }
