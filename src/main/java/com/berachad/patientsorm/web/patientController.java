@@ -43,7 +43,7 @@ public class patientController {
         patientRepository.deleteById(id);
         return "redirect:/user/index?page=" + page + "&keyword=" + keyword;
     }
-
+// is Not working
     @GetMapping("/")
     public String home() {
         return "home";

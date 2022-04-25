@@ -42,11 +42,12 @@ private DataSource dataSource;
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http.authorizeRequests().antMatchers("/").permitAll().anyRequest().authenticated();
+
         // All of this urls should have admin role
+        http.authorizeRequests().antMatchers("/").permitAll();
         http.authorizeHttpRequests().antMatchers("/admin/**").hasRole("ADMIN");
         http.authorizeHttpRequests().antMatchers("/user/**").hasRole("USER");
-        http.authorizeHttpRequests().anyRequest().authenticated();
+       // http.authorizeHttpRequests().anyRequest().authenticated();
         http.exceptionHandling().accessDeniedPage("/403");
         http.formLogin();
     }
