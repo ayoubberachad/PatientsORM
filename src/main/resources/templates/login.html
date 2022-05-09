@@ -306,13 +306,7 @@
                         <div class="box-root box-background--gray100 animationLeftRight tans3s"
                              style="flex-grow: 1;"></div>
                     </div>
-                    <div class="box-root flex-flex" style="grid-area: 2 / 15 / auto / end;">
-                        <div class="box-root box-background--cyan200 animationRightLeft tans4s"
-                             style="flex-grow: 1;"></div>
-                    </div>
-                    <div class="box-root flex-flex" style="grid-area: 3 / 14 / auto / end;">
-                        <div class="box-root box-background--blue animationRightLeft" style="flex-grow: 1;"></div>
-                    </div>
+
                     <div class="box-root flex-flex" style="grid-area: 4 / 17 / auto / 20;">
                         <div class="box-root box-background--gray100 animationRightLeft tans4s"
                              style="flex-grow: 1;"></div>
@@ -331,10 +325,10 @@
                     <div class="formbg">
                         <div class="formbg-inner padding-horizontal--48">
                             <span class="padding-bottom--15">Sign in to your account</span>
-                            <form id="stripe-login">
+                            <form id="stripe-login" method="post" th:action="@{/login}" >
                                 <div class="field padding-bottom--24">
-                                    <label for="email">Email</label>
-                                    <input type="email" name="email">
+                                    <label for="username">User name</label>
+                                    <input  id="username"  type="text" name="username">
                                 </div>
                                 <div class="field padding-bottom--24">
                                     <div class="grid--50-50">
@@ -343,7 +337,7 @@
                                             <a href="#">Forgot your password?</a>
                                         </div>
                                     </div>
-                                    <input type="password" name="password">
+                                    <input type="password"  id="password" name="password">
                                 </div>
                                 <div class="field field-checkbox padding-bottom--24 flex-flex align-center">
                                     <label for="checkbox">
@@ -351,11 +345,13 @@
                                     </label>
                                 </div>
                                 <div class="field padding-bottom--24">
-                                    <input type="submit" name="submit" value="Continue">
+                                    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
                                 </div>
                                 <div class="field">
                                     <a class="ssolink" href="#">Use single sign-on (Google) instead</a>
                                 </div>
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                             </form>
                         </div>
                     </div>
