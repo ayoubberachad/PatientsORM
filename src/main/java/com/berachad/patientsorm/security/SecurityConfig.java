@@ -35,23 +35,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             auth.inMemoryAuthentication().withUser("admin").password(passwordEncoder.encode("1234")).roles("USER", "ADMIN");
         */
         // Secend Methode JDBC Authentification
-        /*
+
             auth.jdbcAuthentication()
            .dataSource(dataSource)
            .usersByUsernameQuery("select username as principal, password as credentials, active from users where username=?")
            .authoritiesByUsernameQuery("select username as principal , role as role from users_roles where username =?")
            .rolePrefix("ROLE_")
            .passwordEncoder(passwordEncoder);
-        */
+
 
         //  third Methode Authentification with details Service
 
-        auth.userDetailsService(new UserDetailsService() {
+   /*     auth.userDetailsService(new UserDetailsService() {
             @Override
             public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
                 return null;
             }
-        });
+        });*/
     }
 
 
